@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <title>HTML5 Local Storage demo</title>
+   </head>
+
+   <!-- Javascript functions  -->
+   <script>
+      function RestoreList()
+      {
+         var saved_list = localStorage["list"];
+            
+         if (saved_list != undefined)
+         {
+            document.getElementById("list").innerHTML = saved_list;
+         }
+      }
+
+      function SaveList() {
+         var list_content = document.getElementById("list").innerHTML;
+
+         localStorage["list"] = list_content;
+         
+         list.setAttribute("contentEditable", false);
+      }
+
+      function ResetList() {
+         localStorage.clear();
+
+         window.location.reload();
+      }
+   </script>
+
+   <body onload="RestoreList()">
+      <header>
+         HTML5 Local Storage demo
+      </header>
+
+      <br>
+      <form id="list">
+         <input type="checkbox" id="check_button1"> <span contentEditable="true">task 1</span><br>
+         <input type="checkbox" id="check_button2"> <span contentEditable="true">task 2</span><br>
+         <input type="checkbox" id="check_button3"> <span contentEditable="true">task 3</span><br><br>
+         <input type="button" id="SaveButton" value="Save" onclick="SaveList()" />
+         <input type="button" id="ResetButton" value="Reset" onclick="ResetList()" />
+      </form>
+
+      <br>
+
+      <!-- Footer -->
+      <div>
+         Edit list then refresh/reopen.<br>
+         Data will be remembered!<br><br>
+         Made by <a href="http:\\alextrle.blogspot.com" target="_blank">Alex Le</a><br><br>
+      </div>
+
+   </body>
+
+</html>
